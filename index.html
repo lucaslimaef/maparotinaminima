@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Mapa da Rotina Mínima · 3 treinos de 30 min numa vida cheia</title>
+<meta name="description" content="O guia prático para encaixar 3 treinos de 30 minutos numa semana cheia. Estrutura, os 3 blocos e como distribuir na agenda." />
+<meta name="theme-color" content="#0d1117" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗺️</text></svg>" />
+
+<meta property="og:title" content="Mapa da Rotina Mínima" />
+<meta property="og:description" content="Como encaixar 3 treinos de 30 min numa vida produtiva." />
+<meta property="og:type" content="article" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+<!-- Meta Pixel: Pixel Performix -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '264800457918824');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=264800457918824&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel -->
+
+<style>
+  :root{
+    --bg:#0d1117;
+    --surface:#161b22;
+    --surface-2:#1c222b;
+    --border:#30363d;
+    --border-hover:#484f58;
+    --text:#e6edf3;
+    --muted:#8b949e;
+    --muted-2:#6e7681;
+    --accent:#a855f7;
+    --accent-soft:rgba(168,85,247,.12);
+    --accent-border:rgba(168,85,247,.35);
+    --lemon:#f4d03f;
+    --success:#4ade80;
+    --success-soft:rgba(74,222,128,.10);
+    --success-border:rgba(74,222,128,.30);
+    --danger:#f43f5e;
+    --danger-soft:rgba(244,63,94,.08);
+    --danger-border:rgba(244,63,94,.28);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    min-height:100vh;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+
+  main.wrap{
+    width:100%;
+    max-width:720px;
+    margin:0 auto;
+    padding:48px 22px 80px;
+  }
+
+  /* HERO */
+  .hero{margin-bottom:56px}
+  .eyebrow{
+    display:inline-block;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+    color:var(--muted);
+    background:var(--surface);
+    border:1px solid var(--border);
+    padding:6px 12px;
+    border-radius:999px;
+    margin-bottom:20px;
+  }
+  .hero h1{
+    font-size:clamp(28px,5.2vw,42px);
+    font-weight:900;
+    line-height:1.15;
+    letter-spacing:-1px;
+    margin-bottom:18px;
+    color:var(--text);
+  }
+  .hero .lead{
+    font-size:17px;
+    color:var(--muted);
+    line-height:1.65;
+    max-width:620px;
+  }
+
+  /* TOC */
+  .toc{
+    margin-top:28px;
+    padding:18px 20px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:10px;
+  }
+  .toc .toc-title{
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+    color:var(--muted-2);
+    margin-bottom:12px;
+  }
+  .toc ol{list-style:none;display:flex;flex-direction:column;gap:8px}
+  .toc ol li{font-size:14.5px}
+  .toc ol li a{color:var(--text);border-bottom:1px solid transparent;transition:border-color .15s,color .15s}
+  .toc ol li a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+  .toc ol li .num{color:var(--muted-2);margin-right:10px;font-variant-numeric:tabular-nums}
+
+  /* SECTIONS */
+  section{margin-bottom:48px}
+  section > h2{
+    font-size:24px;
+    font-weight:800;
+    letter-spacing:-.4px;
+    margin-bottom:16px;
+    color:var(--text);
+  }
+  section > p{font-size:15.5px;color:var(--muted);margin-bottom:14px}
+  section > p b{color:var(--text);font-weight:600}
+
+  .bullets{display:flex;flex-direction:column;gap:10px;margin:14px 0}
+  .bullets li{
+    list-style:none;
+    font-size:15px;
+    color:var(--muted);
+    padding-left:22px;
+    position:relative;
+    line-height:1.6;
+  }
+  .bullets li::before{
+    content:"";
+    position:absolute;
+    left:6px;top:11px;
+    width:6px;height:6px;
+    background:var(--accent);
+    border-radius:50%;
+  }
+
+  .disclaimer{
+    margin-top:18px;
+    font-size:13.5px;
+    color:var(--muted-2);
+    background:var(--surface);
+    border-left:3px solid var(--border-hover);
+    padding:12px 16px;
+    border-radius:4px;
+    line-height:1.55;
+  }
+
+  /* EXERCISE CARD */
+  .exercise{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:28px 26px;
+    margin-bottom:24px;
+    transition:border-color .2s;
+  }
+  .exercise:hover{border-color:var(--border-hover)}
+  .exercise h3{
+    font-size:22px;
+    font-weight:800;
+    letter-spacing:-.3px;
+    margin-bottom:14px;
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .exercise h3 .ord{
+    font-size:13px;
+    font-weight:700;
+    color:var(--accent);
+    background:var(--accent-soft);
+    border:1px solid var(--accent-border);
+    padding:3px 9px;
+    border-radius:6px;
+    letter-spacing:.5px;
+  }
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+  .chip{
+    font-size:12px;
+    font-weight:600;
+    padding:4px 10px;
+    border-radius:6px;
+    background:var(--surface-2);
+    border:1px solid var(--border);
+    color:var(--muted);
+  }
+  .chip.reps{
+    background:rgba(244,208,63,.08);
+    border-color:rgba(244,208,63,.30);
+    color:var(--lemon);
+  }
+  .chip.focus{
+    background:var(--accent-soft);
+    border-color:var(--accent-border);
+    color:#d4b3ff;
+  }
+
+  .label{
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+    color:var(--muted-2);
+    margin-bottom:8px;
+  }
+
+  .steps{
+    counter-reset:step;
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:20px;
+  }
+  .steps li{
+    counter-increment:step;
+    font-size:15px;
+    color:var(--text);
+    padding-left:32px;
+    position:relative;
+    line-height:1.55;
+  }
+  .steps li::before{
+    content:counter(step);
+    position:absolute;
+    left:0;top:1px;
+    width:22px;height:22px;
+    background:var(--surface-2);
+    border:1px solid var(--border);
+    border-radius:50%;
+    color:var(--muted);
+    font-size:12px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .callout{
+    border-radius:8px;
+    padding:12px 14px;
+    font-size:14px;
+    line-height:1.55;
+    margin-top:12px;
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+  }
+  .callout .ico{font-weight:900;font-size:14px;line-height:1.55;flex-shrink:0}
+  .callout.error{
+    background:var(--danger-soft);
+    border:1px solid var(--danger-border);
+    color:#fda4af;
+  }
+  .callout.error .ico{color:var(--danger)}
+  .callout.error b{color:#fecdd3}
+  .callout.tip{
+    background:var(--success-soft);
+    border:1px solid var(--success-border);
+    color:#bbf7d0;
+  }
+  .callout.tip .ico{color:var(--success)}
+  .callout.tip b{color:#dcfce7}
+
+  /* APLICAR */
+  .apply{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:24px 26px;
+  }
+  .apply p{font-size:15px;color:var(--muted);margin-bottom:10px;line-height:1.65}
+  .apply p:last-child{margin-bottom:0}
+  .apply b{color:var(--text);font-weight:600}
+
+  /* TABELA SEMANA */
+  .week{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:16px;
+    font-size:14.5px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:12px;
+    overflow:hidden;
+  }
+  .week th,.week td{
+    padding:12px 14px;
+    text-align:left;
+    border-bottom:1px solid var(--border);
+  }
+  .week th{
+    font-size:11.5px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--muted-2);
+    font-weight:700;
+  }
+  .week td{color:var(--text)}
+  .week td.day{color:var(--muted);font-weight:600;white-space:nowrap}
+  .week tr:last-child td{border-bottom:none}
+  .week td.rest{color:var(--muted-2)}
+
+  /* REVELAÇÃO */
+  .reveal{
+    margin-top:64px;
+    padding-top:48px;
+    border-top:1px solid var(--border);
+  }
+  .reveal h2{
+    font-size:22px;
+    font-weight:800;
+    margin-bottom:14px;
+    color:var(--text);
+  }
+  .reveal p{
+    font-size:15.5px;
+    color:var(--muted);
+    line-height:1.7;
+    margin-bottom:14px;
+  }
+  .reveal p:last-of-type{margin-bottom:0}
+  .reveal b{color:var(--text);font-weight:600}
+  .reveal a.ig{
+    color:var(--accent);
+    border-bottom:1px solid rgba(168,85,247,.4);
+    transition:border-color .15s;
+  }
+  .reveal a.ig:hover{border-bottom-color:var(--accent)}
+
+  /* OFFER */
+  .offer{
+    margin-top:40px;
+    background:linear-gradient(135deg,rgba(168,85,247,.12),rgba(168,85,247,.04));
+    border:1.5px solid var(--accent-border);
+    border-radius:16px;
+    padding:32px 28px;
+  }
+  .offer .offer-eyebrow{
+    display:inline-block;
+    font-size:11.5px;
+    font-weight:800;
+    letter-spacing:1.4px;
+    text-transform:uppercase;
+    color:var(--lemon);
+    margin-bottom:12px;
+  }
+  .offer h2{
+    font-size:clamp(22px,3.5vw,28px);
+    font-weight:900;
+    line-height:1.2;
+    letter-spacing:-.5px;
+    margin-bottom:18px;
+    color:var(--text);
+  }
+  .offer > p{font-size:15px;color:var(--muted);margin-bottom:18px;line-height:1.65}
+  .offer ul.benefits{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:24px;
+  }
+  .offer ul.benefits li{
+    font-size:14.5px;
+    color:var(--muted);
+    padding-left:26px;
+    position:relative;
+    line-height:1.5;
+  }
+  .offer ul.benefits li::before{
+    content:"✓";
+    position:absolute;
+    left:0;top:0;
+    color:var(--success);
+    font-weight:800;
+    font-size:14px;
+  }
+  .offer ul.benefits li b{color:var(--text);font-weight:600}
+
+  .cta{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:linear-gradient(135deg,var(--accent) 0%,#c026d3 100%);
+    color:#fff;
+    font-size:16px;
+    font-weight:800;
+    letter-spacing:.2px;
+    padding:16px 28px;
+    border-radius:999px;
+    box-shadow:0 8px 28px rgba(168,85,247,.30);
+    transition:transform .15s,box-shadow .15s;
+    text-decoration:none;
+  }
+  .cta:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 36px rgba(168,85,247,.45);
+  }
+  .cta .arrow{font-size:18px;line-height:1}
+
+  .cta-sub{
+    margin-top:14px;
+    font-size:13px;
+    color:var(--muted);
+    line-height:1.6;
+  }
+  .cta-sub a{color:var(--accent);border-bottom:1px solid rgba(168,85,247,.4)}
+  .cta-sub a:hover{border-bottom-color:var(--accent)}
+
+  /* PS */
+  .ps{
+    margin-top:36px;
+    background:var(--surface);
+    border-left:3px solid var(--accent);
+    border-radius:6px;
+    padding:20px 22px;
+    font-size:14.5px;
+    color:var(--muted);
+    line-height:1.7;
+  }
+  .ps .ps-label{
+    color:var(--accent);
+    font-weight:900;
+    letter-spacing:.4px;
+    text-transform:uppercase;
+    font-size:11.5px;
+    margin-right:6px;
+  }
+  .ps b{color:var(--text);font-weight:600}
+  .ps a{color:var(--accent);font-weight:600;border-bottom:1px solid rgba(168,85,247,.4)}
+  .ps a:hover{border-bottom-color:var(--accent)}
+
+  /* FOOTER */
+  footer{
+    margin-top:56px;
+    padding-top:24px;
+    border-top:1px solid var(--border);
+    font-size:13px;
+    color:var(--muted-2);
+    text-align:center;
+    line-height:1.7;
+  }
+  footer a{color:var(--muted)}
+  footer a:hover{color:var(--accent)}
+
+  @media (max-width:560px){
+    main.wrap{padding:32px 18px 64px}
+    .exercise{padding:24px 20px}
+    .offer{padding:26px 22px}
+    .week th,.week td{padding:10px 11px;font-size:13.5px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{transition-duration:.01s!important}
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+
+    <!-- HERO -->
+    <header class="hero">
+      <span class="eyebrow">Mapa da Rotina Mínima</span>
+      <h1>Como encaixar 3 treinos de 30 minutos numa semana cheia</h1>
+      <p class="lead">
+        A maioria não para de treinar por preguiça. Para porque montou uma rotina grande demais pra uma vida que já estava cheia. Este mapa faz o contrário: parte do tempo que você realmente tem e encaixa o treino dentro dele, em blocos de 30 minutos que cabem em qualquer agenda.
+      </p>
+
+      <nav class="toc" aria-label="Índice dos blocos">
+        <div class="toc-title">Os 3 blocos da semana</div>
+        <ol>
+          <li><a href="#b1"><span class="num">A</span>Corpo inteiro · Força</a></li>
+          <li><a href="#b2"><span class="num">B</span>Cardio + Core</a></li>
+          <li><a href="#b3"><span class="num">C</span>Inferiores + Glúteo</a></li>
+        </ol>
+      </nav>
+    </header>
+
+    <!-- POR QUE -->
+    <section>
+      <h2>Por que 3 × 30 min funciona melhor que o plano perfeito</h2>
+      <p>
+        O erro clássico é montar o plano ideal: 5 dias por semana, 1h30 cada, dieta fechada, tudo de uma vez. Funciona <b>até a segunda semana</b> — quando a vida real volta e a rotina inflada não sobrevive ao primeiro dia corrido.
+      </p>
+      <p>
+        O Mapa da Rotina Mínima parte do contrário: qual é o <b>mínimo que você consegue manter por meses</b>, mesmo na semana ruim? Três blocos de 30 minutos é esse mínimo pra quase todo mundo. Pouco o suficiente pra não ter desculpa, e o bastante pra gerar resultado real quando repetido.
+      </p>
+      <ul class="bullets">
+        <li>3 treinos de 30 min bem usados batem 1 treino de 90 min esporádico.</li>
+        <li>Consistência por 12 semanas vence intensidade por 12 dias.</li>
+        <li>Treino curto reduz a fricção de começar — que é o passo mais difícil do dia.</li>
+      </ul>
+      <div class="disclaimer">
+        Este guia é um ponto de partida geral. Se você tem lesão, condição de saúde ou está há muito tempo parado, ajuste com um profissional antes de seguir. Dor não é "parte do processo" — é informação.
+      </div>
+    </section>
+
+    <!-- BLOCO 1 -->
+    <section id="b1" class="exercise">
+      <h3><span class="ord">TREINO A</span>Corpo inteiro · Força</h3>
+      <div class="chips">
+        <span class="chip focus">Empurrar · Puxar · Pernas</span>
+        <span class="chip reps">30 min</span>
+        <span class="chip">Iniciante–Intermediário</span>
+      </div>
+
+      <div class="label">Estrutura dos 30 minutos</div>
+      <ol class="steps">
+        <li><b>5 min</b> — mobilidade: rotação de ombro, agachamento livre lento, gato-camelo.</li>
+        <li><b>20 min</b> — circuito em 3 a 4 voltas: agachamento, flexão (ou remada com elástico/mochila), afundo alternado, prancha.</li>
+        <li><b>5 min</b> — respiração e alongamento leve pra desacelerar.</li>
+      </ol>
+
+      <div class="callout error">
+        <span class="ico">✕</span>
+        <div><b>Erro comum:</b> tentar fazer cada exercício "perfeito" e estourar o tempo, deixando metade do treino pra trás.</div>
+      </div>
+      <div class="callout tip">
+        <span class="ico">✓</span>
+        <div><b>Dica:</b> cronômetro de 30 min ligado. Acabou o tempo, acabou o treino. O que importa é fechar a semana, não fechar a série perfeita.</div>
+      </div>
+    </section>
+
+    <!-- BLOCO 2 -->
+    <section id="b2" class="exercise">
+      <h3><span class="ord">TREINO B</span>Cardio + Core</h3>
+      <div class="chips">
+        <span class="chip focus">Condicionamento</span>
+        <span class="chip reps">30 min</span>
+        <span class="chip">Todos os níveis</span>
+      </div>
+
+      <div class="label">Estrutura dos 30 minutos</div>
+      <ol class="steps">
+        <li><b>20 min</b> — caminhada rápida, corrida leve ou bike, num ritmo em que você consegue conversar mas não cantar.</li>
+        <li><b>10 min</b> — core: prancha, prancha lateral, abdominal controlado e ponte de glúteo.</li>
+      </ol>
+
+      <div class="callout error">
+        <span class="ico">✕</span>
+        <div><b>Erro comum:</b> começar rápido demais e morrer no minuto 8. Cardio bom é o que você consegue sustentar até o fim, não o que te destrói no começo.</div>
+      </div>
+      <div class="callout tip">
+        <span class="ico">✓</span>
+        <div><b>Dica:</b> o ritmo certo é "consigo falar, mas não consigo cantar". Esse é o ponto onde você queima e ainda consegue manter por 20 minutos.</div>
+      </div>
+    </section>
+
+    <!-- BLOCO 3 -->
+    <section id="b3" class="exercise">
+      <h3><span class="ord">TREINO C</span>Inferiores + Glúteo</h3>
+      <div class="chips">
+        <span class="chip focus">Pernas e posterior</span>
+        <span class="chip reps">30 min</span>
+        <span class="chip">Iniciante–Intermediário</span>
+      </div>
+
+      <div class="label">Estrutura dos 30 minutos</div>
+      <ol class="steps">
+        <li><b>5 min</b> — ativação: ponte de glúteo, abdução com elástico, agachamento livre lento.</li>
+        <li><b>20 min</b> — agachamento, elevação de quadril (ou terra leve), afundo e panturrilha, em 3 voltas controladas.</li>
+        <li><b>5 min</b> — alongamento de posterior, quadríceps e glúteo.</li>
+      </ol>
+
+      <div class="callout error">
+        <span class="ico">✕</span>
+        <div><b>Erro comum:</b> pular a ativação e ir direto pra carga. É o caminho mais curto pra sentir o joelho ou a lombar reclamando.</div>
+      </div>
+      <div class="callout tip">
+        <span class="ico">✓</span>
+        <div><b>Dica:</b> 2 séries com técnica que você mantém valem mais que 4 séries arrastadas. Qualidade do movimento primeiro, carga depois.</div>
+      </div>
+    </section>
+
+    <!-- APLICAR -->
+    <section>
+      <h2>O mapa da semana: como distribuir</h2>
+      <div class="apply">
+        <p>Espalhe os 3 blocos em <b>dias não seguidos</b>, pra dar um dia de recuperação entre eles. Dois modelos que funcionam pra quem tem agenda cheia:</p>
+        <table class="week" aria-label="Distribuição semanal sugerida">
+          <thead>
+            <tr><th>Dia</th><th>Opção 1</th><th>Opção 2</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="day">Segunda</td><td>Treino A</td><td class="rest">Livre</td></tr>
+            <tr><td class="day">Terça</td><td class="rest">Livre</td><td>Treino A</td></tr>
+            <tr><td class="day">Quarta</td><td>Treino B</td><td class="rest">Livre</td></tr>
+            <tr><td class="day">Quinta</td><td class="rest">Livre</td><td>Treino B</td></tr>
+            <tr><td class="day">Sexta</td><td>Treino C</td><td class="rest">Livre</td></tr>
+            <tr><td class="day">Sábado</td><td class="rest">Livre</td><td>Treino C</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:16px"><b>Marque na agenda</b> como compromisso fixo, mesmo horário. Treino que depende de "quando sobrar tempo" nunca acontece — tempo não sobra, você reserva.</p>
+        <p><b>Tempo até notar:</b> disposição já na 1ª semana, o corpo respondendo por volta da 4ª, e diferença no espelho entre a 8ª e a 12ª semana de consistência.</p>
+      </div>
+    </section>
+
+    <!-- REVELAÇÃO -->
+    <section class="reveal">
+      <h2>Quem escreveu isso?</h2>
+      <p>
+        Sou <b>Lucas Lima</b>, personal trainer baseado em Portugal. Trabalho com gente que tem vida cheia — trabalho, filhos, agenda apertada — e que já tentou treinar várias vezes, mas sempre esbarrou na falta de tempo e na rotina grande demais.
+      </p>
+      <p>
+        O Mapa da Rotina Mínima é o ponto de partida que eu uso com essas pessoas. É genérico de propósito: serve pra começar e criar o hábito. Mas o treino que realmente muda o teu corpo é o que respeita a <b>tua</b> rotina, o teu histórico e o teu objetivo — e isso um guia pronto não consegue fazer sozinho.
+      </p>
+      <p>
+        Se quiser ver o que mais faço: <a class="ig" href="https://instagram.com/personaltrainerlucaslima" target="_blank" rel="noopener">@personaltrainerlucaslima</a>.
+      </p>
+    </section>
+
+    <!-- OFFER: CONSULTORIA -->
+    <section class="offer">
+      <span class="offer-eyebrow">Próximo passo</span>
+      <h2>Quer esse mapa montado pra tua vida, com alguém do teu lado?</h2>
+      <p>
+        Este guia te dá a estrutura. A <b>Consultoria mensal</b> te dá o resto: treino prescrito pra tua rotina real, ajuste de carga semana a semana, correção de execução por vídeo e alguém acompanhando até virar hábito de verdade.
+      </p>
+
+      <ul class="benefits">
+        <li><b>Treino feito pra você</b> — nada de app genérico. Eu monto com base na tua agenda, histórico e equipamento.</li>
+        <li><b>Acompanhamento semanal</b> — ajusto carga e exercícios conforme você evolui (ou conforme a semana aperta).</li>
+        <li><b>Correção de execução por vídeo</b> — você grava, eu corrijo. É o que evita lesão e acelera resultado.</li>
+        <li><b>Alguém do teu lado</b> — a diferença entre tentar sozinho de novo e finalmente manter.</li>
+      </ul>
+
+      <a class="cta" href="https://ptlucaslima.pt/#consultoria?ref=maparotinaminima" target="_blank" rel="noopener">
+        <span>Quero conhecer a Consultoria</span>
+        <span class="arrow">→</span>
+      </a>
+      <p class="cta-sub">
+        Vagas limitadas por mês · acompanhamento individual<br />
+        Me chama no direct se quiser tirar dúvida antes: <a href="https://instagram.com/personaltrainerlucaslima" target="_blank" rel="noopener">@personaltrainerlucaslima</a>
+      </p>
+    </section>
+
+    <!-- PS -->
+    <div class="ps">
+      <span class="ps-label">PS</span>
+      Se ainda não é hora de consultoria e você só quer começar com um plano pronto e barato, eu também tenho o <a href="https://buy.stripe.com/9B67sN9W5ceNaW4aNw08g00?ref=maparotinaminima" target="_blank" rel="noopener">Treino Express por €7</a>: você responde um formulário curto e em até 72h recebe um PDF com plano feito por mim. Sem mensalidade, sem app. Só o treino.
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      © Lucas Lima · <a href="https://ptlucaslima.pt" target="_blank" rel="noopener">ptlucaslima.pt</a> · <a href="https://instagram.com/personaltrainerlucaslima" target="_blank" rel="noopener">@personaltrainerlucaslima</a>
+    </footer>
+
+  </main>
+</body>
+</html>
