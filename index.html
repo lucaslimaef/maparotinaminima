@@ -466,11 +466,107 @@ src="https://www.facebook.com/tr?id=264800457918824&ev=PageView&noscript=1"/></n
   footer a{color:var(--muted)}
   footer a:hover{color:var(--accent)}
 
+  /* PROGRESS BAR */
+  .progress{
+    margin-top:28px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:18px 20px;
+  }
+  .progress .ptop{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:12px;
+  }
+  .progress .ptitle{
+    font-size:11.5px;font-weight:700;letter-spacing:1.2px;
+    text-transform:uppercase;color:var(--muted-2);
+  }
+  .progress .pcount{font-size:14px;font-weight:700;color:var(--accent)}
+  .progress .pbar{
+    height:8px;border-radius:999px;background:var(--surface-2);
+    border:1px solid var(--border);overflow:hidden;
+  }
+  .progress .pfill{
+    height:100%;width:0;border-radius:999px;
+    background:linear-gradient(90deg,var(--accent),#c026d3);
+    transition:width .4s ease;
+  }
+  .progress .pmsg{margin-top:10px;font-size:13px;color:var(--muted);min-height:18px}
+  .progress .preset{
+    margin-top:6px;font-size:12px;color:var(--muted-2);
+    background:none;border:none;cursor:pointer;padding:0;
+    text-decoration:underline;text-underline-offset:2px;
+  }
+  .progress .preset:hover{color:var(--accent)}
+
+  /* EXERCISE ACTION ROW */
+  .ex-actions{
+    display:flex;flex-wrap:wrap;gap:12px;align-items:center;
+    margin-top:22px;padding-top:20px;border-top:1px solid var(--border);
+  }
+  .timer{
+    display:flex;align-items:center;gap:10px;
+    background:var(--surface-2);border:1px solid var(--border);
+    border-radius:999px;padding:6px 8px 6px 16px;
+  }
+  .timer .tdisplay{
+    font-size:18px;font-weight:800;font-variant-numeric:tabular-nums;
+    letter-spacing:.5px;color:var(--text);min-width:62px;
+  }
+  .timer.running .tdisplay{color:var(--lemon)}
+  .timer.done .tdisplay{color:var(--success)}
+  .tbtn{
+    width:34px;height:34px;border-radius:50%;cursor:pointer;
+    border:1px solid var(--border);background:var(--surface);
+    color:var(--text);font-size:14px;line-height:1;
+    display:flex;align-items:center;justify-content:center;
+    transition:border-color .15s,background .15s;
+  }
+  .tbtn:hover{border-color:var(--accent);color:var(--accent)}
+  .tbtn.play{background:var(--accent);border-color:var(--accent);color:#fff}
+  .tbtn.play:hover{background:#c026d3;color:#fff}
+
+  .done-btn{
+    display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+    margin-left:auto;font-size:14px;font-weight:700;
+    background:var(--surface-2);border:1px solid var(--border);
+    color:var(--muted);padding:9px 18px;border-radius:999px;
+    transition:all .15s;
+  }
+  .done-btn:hover{border-color:var(--success-border);color:var(--success)}
+  .done-btn .check{font-size:13px;font-weight:900}
+  .exercise.is-done{border-color:var(--success-border)}
+  .exercise.is-done .done-btn{
+    background:var(--success-soft);border-color:var(--success-border);color:var(--success);
+  }
+  .exercise.is-done h3 .ord{
+    background:var(--success-soft);border-color:var(--success-border);color:var(--success);
+  }
+
+  /* WEEK TOGGLE */
+  .week-toggle{display:flex;gap:8px;margin:16px 0 4px}
+  .wtab{
+    flex:1;cursor:pointer;font-size:13.5px;font-weight:700;
+    padding:10px 12px;border-radius:8px;text-align:center;
+    background:var(--surface);border:1px solid var(--border);color:var(--muted);
+    transition:all .15s;
+  }
+  .wtab:hover{border-color:var(--border-hover)}
+  .wtab.active{
+    background:var(--accent-soft);border-color:var(--accent-border);color:#d4b3ff;
+  }
+  .week td.hl{color:var(--text);font-weight:600}
+  .week td.dim{color:var(--muted-2)}
+
   @media (max-width:560px){
     main.wrap{padding:32px 18px 64px}
     .exercise{padding:24px 20px}
     .offer{padding:26px 22px}
     .week th,.week td{padding:10px 11px;font-size:13.5px}
+    .done-btn{margin-left:0}
   }
   @media (prefers-reduced-motion:reduce){
     *,*::before,*::after{transition-duration:.01s!important}
@@ -496,6 +592,16 @@ src="https://www.facebook.com/tr?id=264800457918824&ev=PageView&noscript=1"/></n
           <li><a href="#b3"><span class="num">C</span>Inferiores + Glúteo</a></li>
         </ol>
       </nav>
+
+      <div class="progress" id="progress">
+        <div class="ptop">
+          <span class="ptitle">Sua semana</span>
+          <span class="pcount" id="pcount">0 / 3 treinos</span>
+        </div>
+        <div class="pbar"><div class="pfill" id="pfill"></div></div>
+        <div class="pmsg" id="pmsg">Marque cada treino como feito ao terminar.</div>
+        <button class="preset" id="preset" type="button" hidden>Zerar semana</button>
+      </div>
     </header>
 
     <!-- POR QUE -->
@@ -541,6 +647,15 @@ src="https://www.facebook.com/tr?id=264800457918824&ev=PageView&noscript=1"/></n
         <span class="ico">✓</span>
         <div><b>Dica:</b> cronômetro de 30 min ligado. Acabou o tempo, acabou o treino. O que importa é fechar a semana, não fechar a série perfeita.</div>
       </div>
+
+      <div class="ex-actions">
+        <div class="timer" data-timer>
+          <span class="tdisplay">30:00</span>
+          <button class="tbtn play" data-play type="button" aria-label="Iniciar timer">▶</button>
+          <button class="tbtn" data-reset type="button" aria-label="Reiniciar timer">↺</button>
+        </div>
+        <button class="done-btn" data-done="A" type="button"><span class="check">○</span> Marcar como feito</button>
+      </div>
     </section>
 
     <!-- BLOCO 2 -->
@@ -565,6 +680,15 @@ src="https://www.facebook.com/tr?id=264800457918824&ev=PageView&noscript=1"/></n
       <div class="callout tip">
         <span class="ico">✓</span>
         <div><b>Dica:</b> o ritmo certo é "consigo falar, mas não consigo cantar". Esse é o ponto onde você queima e ainda consegue manter por 20 minutos.</div>
+      </div>
+
+      <div class="ex-actions">
+        <div class="timer" data-timer>
+          <span class="tdisplay">30:00</span>
+          <button class="tbtn play" data-play type="button" aria-label="Iniciar timer">▶</button>
+          <button class="tbtn" data-reset type="button" aria-label="Reiniciar timer">↺</button>
+        </div>
+        <button class="done-btn" data-done="B" type="button"><span class="check">○</span> Marcar como feito</button>
       </div>
     </section>
 
@@ -592,24 +716,37 @@ src="https://www.facebook.com/tr?id=264800457918824&ev=PageView&noscript=1"/></n
         <span class="ico">✓</span>
         <div><b>Dica:</b> 2 séries com técnica que você mantém valem mais que 4 séries arrastadas. Qualidade do movimento primeiro, carga depois.</div>
       </div>
+
+      <div class="ex-actions">
+        <div class="timer" data-timer>
+          <span class="tdisplay">30:00</span>
+          <button class="tbtn play" data-play type="button" aria-label="Iniciar timer">▶</button>
+          <button class="tbtn" data-reset type="button" aria-label="Reiniciar timer">↺</button>
+        </div>
+        <button class="done-btn" data-done="C" type="button"><span class="check">○</span> Marcar como feito</button>
+      </div>
     </section>
 
     <!-- APLICAR -->
     <section>
       <h2>O mapa da semana: como distribuir</h2>
       <div class="apply">
-        <p>Espalhe os 3 blocos em <b>dias não seguidos</b>, pra dar um dia de recuperação entre eles. Dois modelos que funcionam pra quem tem agenda cheia:</p>
+        <p>Espalhe os 3 blocos em <b>dias não seguidos</b>, pra dar um dia de recuperação entre eles. Escolha o modelo que encaixa na tua semana:</p>
+        <div class="week-toggle">
+          <button class="wtab active" data-week="1" type="button">Opção 1 · Seg/Qua/Sex</button>
+          <button class="wtab" data-week="2" type="button">Opção 2 · Ter/Qui/Sáb</button>
+        </div>
         <table class="week" aria-label="Distribuição semanal sugerida">
           <thead>
-            <tr><th>Dia</th><th>Opção 1</th><th>Opção 2</th></tr>
+            <tr><th>Dia</th><th>Treino</th></tr>
           </thead>
           <tbody>
-            <tr><td class="day">Segunda</td><td>Treino A</td><td class="rest">Livre</td></tr>
-            <tr><td class="day">Terça</td><td class="rest">Livre</td><td>Treino A</td></tr>
-            <tr><td class="day">Quarta</td><td>Treino B</td><td class="rest">Livre</td></tr>
-            <tr><td class="day">Quinta</td><td class="rest">Livre</td><td>Treino B</td></tr>
-            <tr><td class="day">Sexta</td><td>Treino C</td><td class="rest">Livre</td></tr>
-            <tr><td class="day">Sábado</td><td class="rest">Livre</td><td>Treino C</td></tr>
+            <tr><td class="day">Segunda</td><td data-c1="Treino A" data-c2="Livre">Treino A</td></tr>
+            <tr><td class="day">Terça</td><td data-c1="Livre" data-c2="Treino A">Livre</td></tr>
+            <tr><td class="day">Quarta</td><td data-c1="Treino B" data-c2="Livre">Treino B</td></tr>
+            <tr><td class="day">Quinta</td><td data-c1="Livre" data-c2="Treino B">Livre</td></tr>
+            <tr><td class="day">Sexta</td><td data-c1="Treino C" data-c2="Livre">Treino C</td></tr>
+            <tr><td class="day">Sábado</td><td data-c1="Livre" data-c2="Treino C">Livre</td></tr>
           </tbody>
         </table>
         <p style="margin-top:16px"><b>Marque na agenda</b> como compromisso fixo, mesmo horário. Treino que depende de "quando sobrar tempo" nunca acontece — tempo não sobra, você reserva.</p>
@@ -668,5 +805,112 @@ src="https://www.facebook.com/tr?id=264800457918824&ev=PageView&noscript=1"/></n
     </footer>
 
   </main>
+
+  <script>
+  (function(){
+    /* ---- Progresso da semana ---- */
+    var doneSet = {};
+    var pcount = document.getElementById('pcount');
+    var pfill  = document.getElementById('pfill');
+    var pmsg   = document.getElementById('pmsg');
+    var preset = document.getElementById('preset');
+    var msgs = {
+      0:'Marque cada treino como feito ao terminar.',
+      1:'Boa, 1 treino fechado. Faltam 2.',
+      2:'Quase lá. Falta 1 treino pra fechar a semana.',
+      3:'Semana fechada. É isso que muda o jogo: repetir.'
+    };
+    function refresh(){
+      var n = Object.keys(doneSet).length;
+      pcount.textContent = n + ' / 3 treinos';
+      pfill.style.width = (n/3*100) + '%';
+      pmsg.textContent = msgs[n];
+      preset.hidden = n === 0;
+      if(n === 3 && window.fbq){ fbq('trackCustom','SemanaCompleta'); }
+    }
+    document.querySelectorAll('[data-done]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var k = btn.getAttribute('data-done');
+        var card = btn.closest('.exercise');
+        if(doneSet[k]){
+          delete doneSet[k];
+          card.classList.remove('is-done');
+          btn.querySelector('.check').textContent = '○';
+          btn.lastChild.textContent = ' Marcar como feito';
+        } else {
+          doneSet[k] = true;
+          card.classList.add('is-done');
+          btn.querySelector('.check').textContent = '✓';
+          btn.lastChild.textContent = ' Treino feito';
+        }
+        refresh();
+      });
+    });
+    preset.addEventListener('click', function(){
+      doneSet = {};
+      document.querySelectorAll('[data-done]').forEach(function(btn){
+        btn.closest('.exercise').classList.remove('is-done');
+        btn.querySelector('.check').textContent = '○';
+        btn.lastChild.textContent = ' Marcar como feito';
+      });
+      refresh();
+    });
+
+    /* ---- Timers de 30 min ---- */
+    document.querySelectorAll('[data-timer]').forEach(function(t){
+      var total = 30*60, left = total, id = null;
+      var disp = t.querySelector('.tdisplay');
+      var play = t.querySelector('[data-play]');
+      var reset = t.querySelector('[data-reset]');
+      function render(){
+        var m = Math.floor(left/60), s = left%60;
+        disp.textContent = (m<10?'0':'')+m + ':' + (s<10?'0':'')+s;
+      }
+      function stop(){
+        clearInterval(id); id = null;
+        t.classList.remove('running');
+        play.textContent = '▶'; play.setAttribute('aria-label','Iniciar timer');
+      }
+      play.addEventListener('click', function(){
+        if(id){ stop(); return; }
+        if(left === 0){ left = total; t.classList.remove('done'); render(); }
+        t.classList.add('running');
+        play.textContent = '❚❚'; play.setAttribute('aria-label','Pausar timer');
+        id = setInterval(function(){
+          left--; render();
+          if(left <= 0){
+            stop(); t.classList.add('done'); disp.textContent = 'Fim!';
+          }
+        }, 1000);
+      });
+      reset.addEventListener('click', function(){
+        stop(); t.classList.remove('done'); left = total; render();
+      });
+      render();
+    });
+
+    /* ---- Alternar agenda da semana ---- */
+    var cells = document.querySelectorAll('.week td[data-c1]');
+    document.querySelectorAll('[data-week]').forEach(function(tab){
+      tab.addEventListener('click', function(){
+        document.querySelectorAll('[data-week]').forEach(function(x){x.classList.remove('active');});
+        tab.classList.add('active');
+        var opt = tab.getAttribute('data-week');
+        cells.forEach(function(td){
+          var val = td.getAttribute(opt==='1'?'data-c1':'data-c2');
+          td.textContent = val;
+          td.classList.toggle('dim', val === 'Livre');
+          td.classList.toggle('hl', val !== 'Livre');
+        });
+      });
+    });
+    /* estado inicial das células */
+    cells.forEach(function(td){
+      var val = td.getAttribute('data-c1');
+      td.classList.toggle('dim', val === 'Livre');
+      td.classList.toggle('hl', val !== 'Livre');
+    });
+  })();
+  </script>
 </body>
 </html>
